@@ -47,7 +47,7 @@ module "ec2_cluster" {
   instance_type          = "t2.micro"
   key_name               = "user1"
   monitoring             = true
-  vpc_security_group_ids = "${module.vpc.default_security_group_id}"
+  vpc_security_group_ids = ["${module.vpc.default_security_group_id}"]
   subnet_id              = "${element(module.vpc.public_subnets, 0)}"
 
   tags = {
