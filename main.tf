@@ -37,7 +37,7 @@ resource "aws_instance" "web" {
 }
 
 module "ec2_cluster" {
-  source  = "app.terraform.io/${var.org}/ec2-instance/aws"
+  source  = "app.terraform.io/aharness-org/ec2-instance/aws"
   version = "1.14.0"
 
   name                   = "my-cluster"
