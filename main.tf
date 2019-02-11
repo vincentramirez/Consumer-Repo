@@ -45,8 +45,8 @@ module "ec2_cluster" {
 
   ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "t2.micro"
-  #key_name               = "aharness-privatemoduleregistry"
   monitoring             = true
+
   vpc_security_group_ids = ["${module.vpc.default_security_group_id}"]
   subnet_id              = "${element(module.vpc.public_subnets, 0)}"
 
@@ -57,7 +57,7 @@ module "ec2_cluster" {
 }
 
 module "vpc" {
-  source  = "app.terraform.io/aharness-org/vpc/aws"
+  source  = "app.terraform.io/${var.org}/vpc/aws"
   version = "0.9.1"
 
   name = "my-vpc"
