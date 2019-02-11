@@ -43,7 +43,7 @@ module "ec2_cluster" {
   name                   = "my-cluster"
   instance_count         = 2
 
-  ami                    = "ami-ebd02392"
+  ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "t2.micro"
   key_name               = "user1"
   monitoring             = true
