@@ -47,11 +47,8 @@ module "ec2_cluster" {
   instance_type          = "t2.micro"
   key_name               = "user1"
   monitoring             = true
-  vpc_security_group_ids = ["sg-12345678"]
+  vpc_security_group_ids = "${module.vpc.default_security_group_id}"
   subnet_id              = "${element(module.vpc.public_subnets, 0)}"
-  #subnet_id              = "${element(data.terraform_remote_state.networkdetails.public_subnets, 0)}"
-  #subnet_id              = "${module.vpc.private_subnets}"
-  #subnet_id              = "subnet-eddcdzz4"
 
   tags = {
     Terraform = "true"
