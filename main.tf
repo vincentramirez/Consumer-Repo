@@ -63,7 +63,7 @@ module "vpc" {
   name = "my-vpc"
   cidr = "10.0.0.0/16"
 
-  azs             = ["us-east-1"]
+  azs             = ["us-east-1f"]
   private_subnets = ["10.0.1.0/24"]
   public_subnets  = ["10.0.101.0/24"]
 
@@ -74,4 +74,8 @@ module "vpc" {
     Terraform = "true"
     Environment = "dev"
   }
+  output "private_subnet" {
+  value = "${module.vpc.private_subnets}"
+}
+
 }
