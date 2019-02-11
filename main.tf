@@ -45,7 +45,7 @@ module "ec2_cluster" {
 
   ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "t2.micro"
-  key_name               = "user1"
+  key_name               = "aharness-privatemoduleregistry"
   monitoring             = true
   vpc_security_group_ids = ["${module.vpc.default_security_group_id}"]
   subnet_id              = "${element(module.vpc.public_subnets, 0)}"
