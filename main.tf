@@ -49,7 +49,7 @@ module "ec2_cluster" {
 # "${data.terraform_remote_state.vpc.subnet_id}"
 # vpc_security_group_ids = ["${module.vpc.default_security_group_id}"]
 # subnet_id              = "${element(module.vpc.public_subnets, 0)}"
-  vpc_security_group_ids = ["${data.terraform_remote_state.network.default_security_group}"]
+  vpc_security_group_ids = ["${data.terraform_remote_state.network.default_security_group_id}"]
   subnet_id              = "${data.terraform_remote_state.network.research_subnet_id}"
   tags = {
     Terraform = "true"
