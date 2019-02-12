@@ -46,10 +46,11 @@ module "ec2_cluster" {
   ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "t2.micro"
   monitoring             = true
-
-  vpc_security_group_ids = ["${module.vpc.default_security_group_id}"]
-  subnet_id              = "${element(module.vpc.producer.public_subnets, 0)}"
-
+# "${data.terraform_remote_state.vpc.subnet_id}"
+# vpc_security_group_ids = ["${module.vpc.default_security_group_id}"]
+# subnet_id              = "${element(module.vpc.public_subnets, 0)}"
+  vpc_security_group_ids = ["${data.terraform_remote_state.vpc.default_security_group_id}"]
+  subnet_id              = "${element(data.terraform_remote_state.vpc.public_subnets, 0)}"
   tags = {
     Terraform = "true"
     Environment = "dev"
@@ -75,5 +76,18 @@ module "ec2_cluster" {
     Environment = "dev"
   }
 
+}
+*/
+
+data "terraform_remote_state" "vpc" {
+  backend = "atlas"
+  config {
+    name = "aharness-org/Producer-Repo"
+  }
+}
+
+/*resource "aws_instance" "foo" {
+  # ...
+  subnet_id = "${data.terraform_remote_state.vpc.subnet_id}"
 }
 */
