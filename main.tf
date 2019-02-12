@@ -81,6 +81,7 @@ module "ec2_cluster" {
 
 data "terraform_remote_state" "vpc" {
   backend = "atlas"
+  workspace = "Producer-Repo"
   config {
     name = "aharness-org/Producer-Repo"
   }
