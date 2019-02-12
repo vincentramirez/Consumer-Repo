@@ -47,7 +47,7 @@ module "ec2_cluster" {
   instance_type          = "t2.micro"
   monitoring             = true
 
-  vpc_security_group_ids = ["${module.vpc.producer.default_security_group_id}"]
+  vpc_security_group_ids = ["${module.vpc.default_security_group_id}"]
   subnet_id              = "${element(module.vpc.producer.public_subnets, 0)}"
 
   tags = {
@@ -56,7 +56,7 @@ module "ec2_cluster" {
   }
 }
 
-module "vpc" {
+/*module "vpc" {
   source  = "app.terraform.io/aharness-org/vpc/aws"
   version = "0.9.1"
 
@@ -76,3 +76,4 @@ module "vpc" {
   }
 
 }
+*/
