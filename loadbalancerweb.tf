@@ -8,7 +8,7 @@ module "elb" {
 
   name = "consumer-web-elb"
 
-  subnets         = ["${data.terraform_remote_state.network.research_subnet_id}"]
+  subnets         = ["${data.terraform_remote_state.network.development_subnet_id}"]
   security_groups = ["${data.terraform_remote_state.network.default_security_group_id}"]
   internal        = true
 
