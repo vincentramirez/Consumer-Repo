@@ -5,7 +5,8 @@ variable "number_of_instances" {
 
 module "elb" {
   source = "app.terraform.io/aharness-org/elb/aws"
-
+  version = "2.0"
+  
   name = "consumer-web-elb"
 
   subnets         = ["${data.terraform_remote_state.network.development_subnet_id}"]
