@@ -41,7 +41,7 @@ module "elb" {
 
   name = "consumer-loadbalancer"
 
-  subnets         = ["${data.aws_subnet_ids.all.ids}"]
+  subnets         = ["${data.terraform_remote_state.network.research_subnet_id}"]
   security_groups = ["${data.aws_security_group.default.id}"]
   internal        = false
 
@@ -70,16 +70,9 @@ module "elb" {
     },
   ]
 
-  // Uncomment this section and set correct bucket name to enable access logging
-  //  access_logs = [
-  //    {
-  //      bucket = "my-access-logs-bucket"
-  //    },
-  //  ]
-
   tags = {
-    Owner       = "user"
-    Environment = "dev"
+    Owner       = "Consumer-Team"
+    Environment = "Development"
   }
   # ELB attachments
   number_of_instances = "${var.number_of_instances}"
