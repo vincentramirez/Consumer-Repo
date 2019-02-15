@@ -1,3 +1,11 @@
+data "terraform_remote_state" "network" {
+  backend = "atlas"
+
+  config {
+    name = "${var.org}/${var.workspace_name}"
+  }
+}
+
 variable "number_of_instances" {
   description = "Number of instances to create and attach to Consumer ELB"
   default     = 2
