@@ -37,9 +37,9 @@ resource "aws_instance" "web" {
 }
 
 module "elb" {
-  source = "../../"
+  source = "app.terraform.io/aharness-org/elb/aws"
 
-  name = "elb-example"
+  name = "consumer-loadbalancer"
 
   subnets         = ["${data.aws_subnet_ids.all.ids}"]
   security_groups = ["${data.aws_security_group.default.id}"]
