@@ -5,7 +5,7 @@ variable "number_of_instances" {
 
 module "elb" {
   source = "app.terraform.io/aharness-org/elb/aws"
-  version = "2.0"
+  version = "1.4.1"
   
   name = "consumer-web-elb"
 
