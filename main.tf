@@ -45,7 +45,7 @@ module "elb" {
 
   name = "consumer-web-elb"
 
-  subnets         = ["${data.terraform_remote_state.network.development_subnet_id}"]
+  subnets         = ["${data.terraform_remote_state.network.research_subnet_id}"]
   security_groups = ["${data.terraform_remote_state.network.default_security_group_id}"]
   internal        = false
 
@@ -96,6 +96,6 @@ module "ec2_instances" {
   ami                         = "${data.aws_ami.ubuntu.id}"
   instance_type               = "t2.micro"
   vpc_security_group_ids      = ["${data.terraform_remote_state.network.default_security_group_id}"]
-  subnet_id                   = "${data.terraform_remote_state.network.development_subnet_id}"
+  subnet_id                   = "${data.terraform_remote_state.network.research_subnet_id}"
   associate_public_ip_address = true
 }
