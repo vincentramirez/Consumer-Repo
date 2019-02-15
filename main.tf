@@ -47,7 +47,7 @@ module "elb" {
 
   subnets         = ["${data.terraform_remote_state.network.research_subnet_id}"]
   security_groups = ["${data.terraform_remote_state.network.default_security_group_id}"]
-  internal        = false
+  internal        = true
 
   listener = [
     {
