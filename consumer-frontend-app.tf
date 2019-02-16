@@ -5,7 +5,7 @@ variable "number_of_instances" {
 
 variable "name" {
   description = "The name of the app deployed"
-  default = "Consumer-FrontEnd"
+  default = "Consumer-App"
 }
 
 module "elb" {
