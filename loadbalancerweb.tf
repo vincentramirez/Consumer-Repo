@@ -12,7 +12,26 @@ module "elb" {
   source  = "app.terraform.io/aharness-org/consumer-elb/aws"
   version = "1.5"
   name = "${var.name}"
+  
+  # ELB attachments
+  number_of_instances = "${var.number_of_instances}"
+  instances           = ["${module.ec2_instances.id}"]
 }
+  
+module "ec2_instances" {
+  source = "app.terraform.io/aharness-org/consumer-ec2-instance/aws"
+
+  instance_count = "${var.number_of_instances}"
+
+  name                        = "consumer-web-app"
+  ami                         = "${data.aws_ami.ubuntu.id}"
+  instance_type               = "t2.micro"
+  vpc_security_group_ids      = ["${aws_security_group.elb.id}"]
+  #vpc_security_group_ids      = ["${data.terraform_remote_state.network.default_security_group_id}"]
+  subnet_id                   = "${data.terraform_remote_state.network.development_subnet_id}"
+  associate_public_ip_address = true
+}
+  
 /*
 resource "aws_security_group" "elb" {
   name = "terraform-consumer-elb"
