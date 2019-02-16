@@ -4,7 +4,7 @@ variable "number_of_instances" {
 }
 
 resource "aws_security_group" "elb" {
-  name = "terraform-example-elb"
+  name = "terraform-consumer-elb"
   egress {
     from_port = 0
     to_port = 0
