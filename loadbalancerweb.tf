@@ -10,7 +10,7 @@ variable "name" {
 
 module "elb" {
   source  = "app.terraform.io/aharness-org/consumer-elb/aws"
-  version = "1.2"
+  version = "1.3"
   name = "${var.name}"
 }
 /*
