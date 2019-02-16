@@ -20,7 +20,7 @@ module "elb" {
   
 module "ec2_instances" {
   source = "app.terraform.io/aharness-org/consumer-ec2-instance/aws"
-  version = "1"
+  version = "1.1"
   instance_count = "${var.number_of_instances}"
 
   name                        = "consumer-web-app"
