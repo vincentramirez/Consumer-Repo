@@ -3,6 +3,17 @@ variable "number_of_instances" {
   default     = 2
 }
 
+variable "name" {
+  description = "The name of the ELB"
+  default = "Consumer-App-ELB"
+}
+
+module "elb" {
+  source  = "app.terraform.io/aharness-org/consumer-elb/aws"
+  #version = "1"
+  name = "${var.name}"
+}
+/*
 resource "aws_security_group" "elb" {
   name = "terraform-consumer-elb"
   egress {
@@ -81,3 +92,4 @@ module "ec2_instances" {
   subnet_id                   = "${data.terraform_remote_state.network.development_subnet_id}"
   associate_public_ip_address = true
 }
+*/
