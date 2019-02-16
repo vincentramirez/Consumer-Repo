@@ -24,12 +24,12 @@ module "ec2_instances" {
   instance_count = "${var.number_of_instances}"
 
   name                        = "consumer-web-app"
-  ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.micro"
-  vpc_security_group_ids      = ["${aws_security_group.elb.id}"]
+  #ami                         = "${data.aws_ami.ubuntu.id}"
+  #instance_type               = "t2.micro"
+  #vpc_security_group_ids      = ["${aws_security_group.elb.id}"]
   #vpc_security_group_ids      = ["${data.terraform_remote_state.network.default_security_group_id}"]
-  subnet_id                   = "${data.terraform_remote_state.network.development_subnet_id}"
-  associate_public_ip_address = true
+  #subnet_id                   = "${data.terraform_remote_state.network.development_subnet_id}"
+  #associate_public_ip_address = true
 }
   
 /*
