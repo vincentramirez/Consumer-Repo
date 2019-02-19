@@ -30,9 +30,9 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
-  subnet_id = "${data.terraform_remote_state.network.research_subnet_id}"
+  subnet_id = "${data.terraform_remote_state.network.production_subnet_id}"
 
   tags {
-    Name = "Research Instance"
+    Name = "Production Instance"
   }
 }
