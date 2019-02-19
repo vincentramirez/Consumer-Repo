@@ -31,9 +31,9 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
   subnet_id = "${data.terraform_remote_state.network.development_subnet_id}"
 
-  tags {
-    Name = "Development Instance"
+ tags {
+   # Name = "Development Instance"
     Owner = "Solutions Engineer"
     TTL = "1"
-  }
+  }  
 }
