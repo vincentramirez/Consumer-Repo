@@ -33,6 +33,6 @@ resource "aws_instance" "web" {
   subnet_id = "${data.terraform_remote_state.network.production_subnet_id}"
 
   tags {
-    Name = "Production Instance"
+    #Name = "Production Instance"
   }
 }
