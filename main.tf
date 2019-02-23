@@ -32,9 +32,8 @@ resource "aws_instance" "web" {
   subnet_id = "${data.terraform_remote_state.network.development_subnet_id}"
 
  tags {
-   # Name = "Development Instance"
+    Name = "Development Instance"
     Owner = "Solutions Engineer"
     TTL = "1"
   }  
 }
-#testing sentinel
